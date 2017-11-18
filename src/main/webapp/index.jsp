@@ -63,8 +63,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
     
    <hr>
-   验证码：<input type="text" name="verifyCode" id="verifyCode" maxlength="5" onblur="ajaxBlur()">
+   <label for="verifyCode"> 验证码</label>
+  <input type="text" name="verifyCode" id="verifyCode" maxlength="5" onblur="ajaxBlur()">
    <a href="javascript:reloadCode();"> <img alt="验证码" id="imagecode" src="<%= request.getContextPath()%>/servlet/ValidationCode"/></a>
-   <div id="tips"></div>
+	<div id="tips" style="display:inline"/>
   </body>
 </html>
