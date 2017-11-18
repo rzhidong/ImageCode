@@ -16,6 +16,11 @@
     <servlet-name>VerifyServlet</servlet-name>
     <servlet-class>com.servlet.VerifyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ValidationCode</servlet-name>
+    <servlet-class>com.servlet.ValidationCode</servlet-class>
+  </servlet>
+
 
 
 
@@ -32,5 +37,9 @@
   <servlet-mapping>
     <servlet-name>VerifyServlet</servlet-name>
     <url-pattern>/servlet/VerifyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ValidationCode</servlet-name>
+    <url-pattern>/servlet/ValidationCode</url-pattern>
   </servlet-mapping>
 </web-app>

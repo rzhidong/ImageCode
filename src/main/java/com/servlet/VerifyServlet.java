@@ -67,15 +67,15 @@ public class VerifyServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		// 用于验证验证码
-		String piccode = (String) request.getSession().getAttribute("piccode");
+		String validation_code = (String) request.getSession().getAttribute("validation_code");
 		
 		String verifyCode = request.getParameter("verifyCode");// 取值
 		verifyCode = verifyCode.toLowerCase();//把字符全部转换为大写的（此语句可以用于验证码不区分大小写）
 		response.setContentType("application/x-www-form-urlencoded; charset=gb2312");// 解决乱码问题
-		if (verifyCode.equals(piccode.toLowerCase())) {
-			out.println("V");
+		if (verifyCode.equals(validation_code.toLowerCase())) {
+			out.println("success");
 		} else {
-			out.println("X");
+			out.println("fail");
 		}
 		out.flush();
 		out.close();

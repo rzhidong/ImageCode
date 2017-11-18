@@ -28,8 +28,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			data : {"verifyCode":verifyCode},
 			contentType: "application/x-www-form-urlencoded; charset=gb2312", 
 			scriptCharset: 'utf-8',
+			//
 			success : function(msg) {
-				$("#tips").html("<strong>"+msg+"</strong>");
+				if ($.trim(msg) == $.trim("success")){
+					$("#tips").html("<strong>√</strong>").css({"color":"green"});
+				}else if($.trim(msg)==$.trim("fail")){
+					$("#tips").html("<strong>X</strong>").css({"color":"red"});
+					$("#verifyCode").val("");
+					reloadCode();
+				}
 			}
 		});
 	}
@@ -37,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function reloadCode()
     {
         var time=new Date().getTime();
-        document.getElementById("imagecode").src="<%= request.getContextPath()%>/servlet/ImageServlet?id="+time;
-        document.getElementById("imagecode1").src="<%= request.getContextPath()%>/servlet/ImageServlet?id="+(time-1);
+        document.getElementById("imagecode1").src="<%= request.getContextPath()%>/servlet/ImageServlet?id="+time;
+        document.getElementById("imagecode").src="<%= request.getContextPath()%>/servlet/ValidationCode?id="+time;
     }
 	</script>
 
@@ -52,8 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
     
    <hr>
-   验证码：<input type="text" name="verifyCode" id="verifyCode" maxlength="4" onblur="ajaxBlur()">
-   <a href="javascript:reloadCode();"> <img alt="验证码" id="imagecode" src="<%= request.getContextPath()%>/servlet/ImageServlet"/></a>
-   <p id="tips"></p>
+   验证码：<input type="text" name="verifyCode" id="verifyCode" maxlength="5" onblur="ajaxBlur()">
+   <a href="javascript:reloadCode();"> <img alt="验证码" id="imagecode" src="<%= request.getContextPath()%>/servlet/ValidationCode"/></a>
+   <div id="tips"></div>
   </body>
 </html>
