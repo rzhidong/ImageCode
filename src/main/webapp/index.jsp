@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	 <script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
-	
 	function ajaxBlur(){
 		var verifyCode = $("#verifyCode").val();
 		$.ajax({
@@ -48,7 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         document.getElementById("imagecode").src="<%= request.getContextPath()%>/servlet/ValidationCode?id="+time;
     }
 	</script>
-
+	<style type="text/css">
+		img{
+			postion:relative;
+			vertical-align: bottom;
+		}
+	</style>
   </head>
   
   <body>
